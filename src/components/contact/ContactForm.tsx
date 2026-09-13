@@ -67,12 +67,12 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/60 p-6 sm:p-8 shadow-2xs">
+    <div className="rounded-3xl border border-slate-200/90 dark:border-white/8 bg-white/70 dark:bg-[#121826] p-6 sm:p-8 shadow-sm">
       <div className="mb-6">
-        <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+        <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-[#f5f7fa] mb-1">
           Send a Direct Message
         </h3>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-[#a8b0c0]">
           Have an opportunity, internship inquiry, or technical question? Fill out the form or
           email directly.
         </p>
@@ -81,7 +81,7 @@ export function ContactForm() {
       {submissionStatus === "success" ? (
         <div
           role="status"
-          className="rounded-xl border border-emerald-200 dark:border-emerald-800/80 bg-emerald-50 dark:bg-emerald-950/40 p-6 text-center space-y-4"
+          className="rounded-2xl border border-emerald-200 dark:border-emerald-800/80 bg-emerald-50 dark:bg-emerald-950/30 p-6 text-center space-y-4"
         >
           <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-6 h-6" />
@@ -130,7 +130,7 @@ export function ContactForm() {
           {submissionStatus === "error" && (
             <div
               role="alert"
-              className="rounded-lg border border-red-200 dark:border-red-800/80 bg-red-50 dark:bg-red-950/40 p-3.5 flex items-start gap-3 text-xs sm:text-sm text-red-700 dark:text-red-300"
+              className="rounded-xl border border-red-200 dark:border-red-800/80 bg-red-50 dark:bg-red-950/40 p-3.5 flex items-start gap-3 text-xs sm:text-sm text-red-700 dark:text-red-300"
             >
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
               <span>{responseMessage}</span>
@@ -143,7 +143,7 @@ export function ContactForm() {
             <div className="space-y-1.5">
               <label
                 htmlFor="name"
-                className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300"
+                className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-[#a8b0c0]"
               >
                 Your Name <span className="text-red-500">*</span>
               </label>
@@ -154,10 +154,10 @@ export function ContactForm() {
                 aria-invalid={!!errors.name}
                 aria-describedby={errors.name ? "name-error" : undefined}
                 placeholder="e.g. Alex Morgan"
-                className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:bg-white dark:focus:bg-slate-950 transition-colors ${
+                className={`w-full px-3.5 py-2 text-sm rounded-xl border bg-slate-50 dark:bg-[#0f1420] text-slate-900 dark:text-[#f5f7fa] placeholder-slate-400 dark:placeholder-slate-600 focus:bg-white dark:focus:bg-[#080b12] transition-colors ${
                   errors.name
                     ? "border-red-500 focus:border-red-500"
-                    : "border-slate-300 dark:border-slate-700 focus:border-blue-500"
+                    : "border-slate-300 dark:border-white/10 focus:border-[#2563eb] dark:focus:border-[#5b8cff]"
                 }`}
                 {...register("name")}
               />
@@ -172,7 +172,7 @@ export function ContactForm() {
             <div className="space-y-1.5">
               <label
                 htmlFor="email"
-                className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300"
+                className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-[#a8b0c0]"
               >
                 Email Address <span className="text-red-500">*</span>
               </label>
@@ -183,10 +183,10 @@ export function ContactForm() {
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? "email-error" : undefined}
                 placeholder="alex@company.com"
-                className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:bg-white dark:focus:bg-slate-950 transition-colors ${
+                className={`w-full px-3.5 py-2 text-sm rounded-xl border bg-slate-50 dark:bg-[#0f1420] text-slate-900 dark:text-[#f5f7fa] placeholder-slate-400 dark:placeholder-slate-600 focus:bg-white dark:focus:bg-[#080b12] transition-colors ${
                   errors.email
                     ? "border-red-500 focus:border-red-500"
-                    : "border-slate-300 dark:border-slate-700 focus:border-blue-500"
+                    : "border-slate-300 dark:border-white/10 focus:border-[#2563eb] dark:focus:border-[#5b8cff]"
                 }`}
                 {...register("email")}
               />
@@ -202,7 +202,7 @@ export function ContactForm() {
           <div className="space-y-1.5">
             <label
               htmlFor="subject"
-              className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300"
+              className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-[#a8b0c0]"
             >
               Subject <span className="text-red-500">*</span>
             </label>
@@ -212,10 +212,10 @@ export function ContactForm() {
               aria-invalid={!!errors.subject}
               aria-describedby={errors.subject ? "subject-error" : undefined}
               placeholder="Internship opportunity / Technical inquiry"
-              className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:bg-white dark:focus:bg-slate-950 transition-colors ${
+              className={`w-full px-3.5 py-2 text-sm rounded-xl border bg-slate-50 dark:bg-[#0f1420] text-slate-900 dark:text-[#f5f7fa] placeholder-slate-400 dark:placeholder-slate-600 focus:bg-white dark:focus:bg-[#080b12] transition-colors ${
                 errors.subject
                   ? "border-red-500 focus:border-red-500"
-                  : "border-slate-300 dark:border-slate-700 focus:border-blue-500"
+                  : "border-slate-300 dark:border-white/10 focus:border-[#2563eb] dark:focus:border-[#5b8cff]"
               }`}
               {...register("subject")}
             />
@@ -230,7 +230,7 @@ export function ContactForm() {
           <div className="space-y-1.5">
             <label
               htmlFor="message"
-              className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300"
+              className="block text-xs font-mono-tech uppercase tracking-wider font-semibold text-slate-700 dark:text-[#a8b0c0]"
             >
               Message <span className="text-red-500">*</span>
             </label>
@@ -240,10 +240,10 @@ export function ContactForm() {
               aria-invalid={!!errors.message}
               aria-describedby={errors.message ? "message-error" : undefined}
               placeholder="Describe the opportunity, role requirements, or project details..."
-              className={`w-full px-3.5 py-2 text-sm rounded-lg border bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:bg-white dark:focus:bg-slate-950 transition-colors resize-y ${
+              className={`w-full px-3.5 py-2 text-sm rounded-xl border bg-slate-50 dark:bg-[#0f1420] text-slate-900 dark:text-[#f5f7fa] placeholder-slate-400 dark:placeholder-slate-600 focus:bg-white dark:focus:bg-[#080b12] transition-colors resize-y ${
                 errors.message
                   ? "border-red-500 focus:border-red-500"
-                  : "border-slate-300 dark:border-slate-700 focus:border-blue-500"
+                  : "border-slate-300 dark:border-white/10 focus:border-[#2563eb] dark:focus:border-[#5b8cff]"
               }`}
               {...register("message")}
             />
@@ -268,11 +268,11 @@ export function ContactForm() {
               <span>Send Message</span>
             </Button>
 
-            <span className="text-xs text-slate-500 dark:text-slate-400 text-center sm:text-right">
+            <span className="text-xs text-slate-500 dark:text-[#a8b0c0] text-center sm:text-right">
               Prefer your default email client?{" "}
               <a
                 href={SOCIAL_LINKS.email.mailto}
-                className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                className="text-[#2563eb] dark:text-[#5b8cff] hover:underline font-medium"
               >
                 Send via mailto
               </a>

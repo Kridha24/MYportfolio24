@@ -32,13 +32,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        "bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow active:scale-[0.99] border border-blue-500/20",
+        "bg-gradient-to-r from-[#3b66ff] via-[#4f7cff] to-[#8b5cf6] text-white hover:shadow-[0_0_22px_rgba(79,124,255,0.38)] hover:brightness-105 active:scale-[0.98] border border-white/15 font-semibold transition-all duration-200",
       secondary:
-        "bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 border border-slate-300 dark:border-slate-700/80",
+        "bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-900 dark:text-slate-100 border border-slate-300 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 active:scale-[0.98]",
       outline:
-        "border border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 bg-transparent text-slate-900 dark:text-slate-100 hover:bg-blue-50/50 dark:hover:bg-blue-950/20",
+        "bg-transparent text-slate-900 dark:text-slate-100 border border-slate-300 dark:border-white/15 hover:border-[#4f7cff] dark:hover:border-[#4f7cff] hover:bg-[#4f7cff]/5 dark:hover:bg-[#4f7cff]/10 hover:shadow-[0_0_16px_rgba(79,124,255,0.22)] active:scale-[0.98]",
       ghost:
-        "text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800/60",
+        "text-slate-700 dark:text-[#a8b3c7] hover:text-[#4f7cff] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 active:scale-[0.98]",
     };
 
     const sizeStyles = {

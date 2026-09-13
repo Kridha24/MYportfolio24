@@ -3,6 +3,7 @@ import { test, expect } from "@playwright/test";
 const VIEWPORTS = [
   { width: 320, height: 800, label: "320px (Small Mobile)" },
   { width: 375, height: 812, label: "375px (Standard Mobile)" },
+  { width: 430, height: 932, label: "430px (Modern Mobile)" },
   { width: 768, height: 1024, label: "768px (Tablet Portrait)" },
   { width: 1024, height: 768, label: "1024px (Tablet Landscape/Small Desktop)" },
   { width: 1440, height: 900, label: "1440px (Desktop HiDPI)" },
@@ -11,6 +12,8 @@ const VIEWPORTS = [
 const ROUTES = [
   "/",
   "/projects",
+  "/projects/homemind-ai",
+  "/projects/ai-finance-controller",
   "/projects/traffiq",
   "/projects/buildease",
   "/resume",

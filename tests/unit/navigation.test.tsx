@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/navigation/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
 function renderWithTheme(ui: React.ReactElement) {
@@ -25,6 +26,7 @@ describe("Navbar Component", () => {
     expect(screen.getAllByText("Experience").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Projects").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Skills").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("DevOps").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Contact").length).toBeGreaterThan(0);
   });
 
@@ -41,5 +43,14 @@ describe("Navbar Component", () => {
     fireEvent.click(menuButton);
     expect(screen.getByRole("button", { name: /close menu/i })).toBeInTheDocument();
     expect(screen.getByText("All Projects & Case Studies")).toBeInTheDocument();
+  });
+});
+
+describe("Footer Component", () => {
+  it("renders active social link to GitHub profile", () => {
+    renderWithTheme(<Footer />);
+    const githubLink = screen.getByRole("link", { name: /github profile/i });
+    expect(githubLink).toBeInTheDocument();
+    expect(githubLink).toHaveAttribute("href", "https://github.com/Kridha24");
   });
 });

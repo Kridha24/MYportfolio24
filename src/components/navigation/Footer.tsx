@@ -1,161 +1,89 @@
 import React from "react";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SOCIAL_LINKS, SITE_CONFIG } from "@/data/links";
 import { ArrowUp, Linkedin, Code2, Mail, Github } from "lucide-react";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800/80 bg-white/50 dark:bg-[#070b12]/60 py-12 transition-colors">
+    <footer className="border-t border-slate-200 dark:border-white/8 py-8 transition-colors">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          {/* Brand & Summary */}
-          <div className="md:col-span-2 space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-mono-tech font-bold text-xs">
-                {SITE_CONFIG.monogram}
-              </div>
-              <span className="font-semibold text-slate-900 dark:text-slate-100 text-base">
-                {SITE_CONFIG.name}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          {/* Identity & Attribution */}
+          <div className="flex items-center gap-3">
+            <div className="w-7 h-7 rounded-full bg-[#2563eb] dark:bg-[#5b8cff] flex items-center justify-center text-white dark:text-[#080b12] font-mono-tech font-bold text-[11px] shrink-0">
+              {SITE_CONFIG.monogram}
+            </div>
+            <div className="text-xs text-slate-600 dark:text-[#a8b0c0]">
+              <span className="font-semibold text-slate-900 dark:text-[#f5f7fa]">
+                Designed and engineered by {SITE_CONFIG.name}.
+              </span>
+              <span className="block text-[11px] text-slate-500 dark:text-[#808a9d]">
+                © {currentYear} • All rights reserved.
               </span>
             </div>
-            <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md leading-relaxed">
-              AI & Full-Stack Developer specializing in real-time computer vision systems,
-              modular web architectures, and high-performance backend pipelines.
-            </p>
-            <p className="text-xs font-mono-tech text-slate-500 dark:text-slate-400">
-              Based in {SITE_CONFIG.location}
-            </p>
           </div>
 
-          {/* Direct Navigation */}
-          <div className="space-y-3">
-            <h3 className="text-xs font-mono-tech uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-              Navigation
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/#about"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  About Mihir
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#experience"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#projects"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  Featured Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/projects"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  All Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resume"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  Resume
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Connect Links */}
-          <div className="space-y-3">
-            <h3 className="text-xs font-mono-tech uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-              Profiles & Contact
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href={SOCIAL_LINKS.linkedin.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  <Linkedin className="w-4 h-4 text-blue-500" />
-                  <span>LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={SOCIAL_LINKS.leetcode.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  <Code2 className="w-4 h-4 text-amber-500" />
-                  <span>LeetCode</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={SOCIAL_LINKS.email.mailto}
-                  className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-cyan-500" />
-                  <span>Email Direct</span>
-                </a>
-              </li>
-              <li>
-                {SOCIAL_LINKS.github.isAvailable && SOCIAL_LINKS.github.url ? (
-                  <a
-                    href={SOCIAL_LINKS.github.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>GitHub</span>
-                  </a>
-                ) : (
-                  <span
-                    className="inline-flex items-center gap-2 text-slate-400 dark:text-slate-500 cursor-not-allowed text-xs font-mono-tech"
-                    title="GitHub profile URL pending addition"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>GitHub (URL Pending)</span>
-                  </span>
-                )}
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-          <p>
-            © {new Date().getFullYear()} {SITE_CONFIG.name}. Built with Next.js 16, TypeScript &
-            Tailwind CSS.
-          </p>
+          {/* Social Links & Back to Top */}
           <div className="flex items-center gap-4">
-            <span className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse-subtle" />
-              Open to Opportunities
-            </span>
+            <div className="flex items-center gap-2">
+              <a
+                href={SOCIAL_LINKS.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-slate-500 dark:text-[#a8b0c0] hover:text-[#2563eb] dark:hover:text-[#5b8cff] hover:bg-slate-100 dark:hover:bg-[#0f1420] transition-colors"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+
+              <a
+                href={SOCIAL_LINKS.leetcode.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-slate-500 dark:text-[#a8b0c0] hover:text-amber-500 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-[#0f1420] transition-colors"
+                aria-label="LeetCode Profile"
+              >
+                <Code2 className="w-4 h-4" />
+              </a>
+
+              <a
+                href={SOCIAL_LINKS.email.mailto}
+                className="p-2 rounded-lg text-slate-500 dark:text-[#a8b0c0] hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-[#0f1420] transition-colors"
+                aria-label="Direct Email"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+
+              {SOCIAL_LINKS.github.isAvailable && SOCIAL_LINKS.github.url ? (
+                <a
+                  href={SOCIAL_LINKS.github.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg text-slate-500 dark:text-[#a8b0c0] hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-[#0f1420] transition-colors"
+                  aria-label="GitHub Profile"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+              ) : (
+                <span
+                  className="p-2 rounded-lg text-slate-400 dark:text-[#6b778d] cursor-not-allowed opacity-50"
+                  title="GitHub profile URL pending"
+                >
+                  <Github className="w-4 h-4" />
+                </span>
+              )}
+            </div>
+
+            <span className="h-4 w-px bg-slate-200 dark:bg-white/10" aria-hidden="true" />
+
             <a
               href="#home"
-              className="inline-flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              aria-label="Back to top of page"
+              className="inline-flex items-center gap-1 text-xs font-mono-tech text-slate-500 dark:text-[#a8b0c0] hover:text-[#2563eb] dark:hover:text-[#5b8cff] transition-colors"
+              aria-label="Back to top"
             >
-              <span>Top</span>
+              <span>TOP</span>
               <ArrowUp className="w-3.5 h-3.5" />
             </a>
           </div>

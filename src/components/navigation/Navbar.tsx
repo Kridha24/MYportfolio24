@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { Menu, X, FileText, ArrowUpRight } from "lucide-react";
+import { Menu, X, FileText, ArrowUpRight, Sparkles } from "lucide-react";
 import { SITE_CONFIG } from "@/data/links";
+import { motion, AnimatePresence } from "motion/react";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/#home", sectionId: "home" },
@@ -13,6 +14,8 @@ const NAV_ITEMS = [
   { label: "Experience", href: "/#experience", sectionId: "experience" },
   { label: "Projects", href: "/#projects", sectionId: "projects" },
   { label: "Skills", href: "/#skills", sectionId: "skills" },
+  { label: "Learning", href: "/#learning", sectionId: "learning" },
+  { label: "DevOps", href: "/#cloud-devops", sectionId: "cloud-devops" },
   { label: "Contact", href: "/#contact", sectionId: "contact" },
 ];
 
@@ -57,7 +60,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change or ESC key
+  // Close mobile menu on ESC key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMobileMenuOpen(false);
@@ -75,132 +78,166 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <header
-      className={`sticky top-0 z-40 w-full transition-all duration-200 ${
-        scrolled
-          ? "bg-white/85 dark:bg-[#0b0f19]/85 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 shadow-xs"
-          : "bg-transparent border-b border-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Monogram / Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 group focus-visible:outline-none"
-          aria-label="Mihir Shekhar Gupta — Home"
+    <header className="sticky top-2 sm:top-4 z-40 w-full px-3 sm:px-6 transition-all duration-300">
+      <div className="max-w-5xl mx-auto">
+        <div
+          className={`h-13 sm:h-14 px-3 sm:px-4 rounded-full flex items-center justify-between border transition-all duration-300 ${
+            scrolled
+              ? "bg-[#f8fafc]/90 dark:bg-[#070a12]/90 backdrop-blur-md border-[#4f7cff]/25 dark:border-white/12 shadow-[0_8px_30px_rgba(79,124,255,0.12)]"
+              : "bg-[#f8fafc]/80 dark:bg-[#070a12]/80 backdrop-blur-md border-slate-200/90 dark:border-white/8 shadow-2xs"
+          }`}
         >
-          <div className="w-9 h-9 rounded-lg bg-blue-600 dark:bg-blue-600 flex items-center justify-center text-white font-mono-tech font-bold text-sm tracking-wider shadow-sm group-hover:bg-blue-700 transition-colors">
-            {SITE_CONFIG.monogram}
-          </div>
-          <div className="hidden sm:flex flex-col">
-            <span className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-              {SITE_CONFIG.name}
-            </span>
-            <span className="text-xs font-mono-tech text-slate-500 dark:text-slate-400">
-              AI & Full-Stack
-            </span>
-          </div>
-        </Link>
-
-        {/* Desktop Navigation Links */}
-        <nav
-          className="hidden md:flex items-center gap-1 bg-slate-100/70 dark:bg-slate-900/60 p-1.5 rounded-xl border border-slate-200/80 dark:border-slate-800/70"
-          aria-label="Main Navigation"
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = isHomePage && activeSection === item.sectionId;
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`relative px-3 py-1.5 text-xs lg:text-sm font-medium rounded-lg transition-colors duration-150 ${
-                  isActive
-                    ? "text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-800 shadow-2xs font-semibold"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-white/50 dark:hover:bg-slate-800/40"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Actions: Resume, Theme Toggle, Mobile Trigger */}
-        <div className="flex items-center gap-2">
+          {/* Monogram / Identity */}
           <Link
-            href="/resume"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs lg:text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            href="/"
+            className="flex items-center gap-2.5 group focus-visible:outline-none shrink-0"
+            aria-label="Mihir Shekhar Gupta — Home"
           >
-            <FileText className="w-3.5 h-3.5" aria-hidden="true" />
-            <span>Resume</span>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#3b66ff] via-[#4f7cff] to-[#8b5cf6] flex items-center justify-center text-white font-mono-tech font-bold text-xs tracking-wider shadow-[0_0_14px_rgba(79,124,255,0.45)] group-hover:scale-105 transition-transform">
+              {SITE_CONFIG.monogram}
+            </div>
+            <div className="hidden sm:flex flex-col">
+              <span className="text-xs font-semibold tracking-tight text-slate-900 dark:text-[#f8fafc]">
+                {SITE_CONFIG.name}
+              </span>
+              <span className="text-[10px] font-mono-tech text-slate-500 dark:text-[#a8b3c7]">
+                Engineering
+              </span>
+            </div>
           </Link>
 
-          <ThemeToggle />
-
-          {/* Mobile hamburger menu toggle */}
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? (
-              <X className="w-5 h-5" aria-hidden="true" />
-            ) : (
-              <Menu className="w-5 h-5" aria-hidden="true" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile menu overlay & drawer */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 top-16 z-50 bg-slate-950/40 backdrop-blur-xs md:hidden"
-          onClick={() => setMobileMenuOpen(false)}
-        >
+          {/* Desktop Navigation Links */}
           <nav
-            className="bg-white dark:bg-[#0f172a] border-b border-slate-200 dark:border-slate-800 p-6 space-y-4 shadow-xl"
-            onClick={(e) => e.stopPropagation()}
-            aria-label="Mobile Navigation"
+            className="hidden lg:flex items-center gap-1"
+            aria-label="Main Navigation"
           >
-            <div className="flex flex-col space-y-2">
-              {NAV_ITEMS.map((item) => (
+            {NAV_ITEMS.map((item) => {
+              const isActive = isHomePage && activeSection === item.sectionId;
+              return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className={`relative px-3.5 py-1 text-xs font-medium rounded-full transition-colors duration-200 ${
+                    isActive
+                      ? "text-[#4f7cff] dark:text-[#4f7cff] font-semibold"
+                      : "text-slate-600 dark:text-[#a8b0c0] hover:text-slate-900 dark:hover:text-white"
+                  }`}
                 >
-                  {item.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeNavPill"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#4f7cff]/15 via-[#8b5cf6]/15 to-[#22d3ee]/10 border border-[#4f7cff]/30 shadow-[0_0_12px_rgba(79,124,255,0.18)]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{item.label}</span>
                 </Link>
-              ))}
-              <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+              );
+            })}
+          </nav>
+
+          {/* Actions: Resume, Theme Toggle, Mobile Trigger */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <Link
+              href="/resume"
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full border border-slate-300/90 dark:border-white/12 hover:border-[#4f7cff] dark:hover:border-[#4f7cff] text-slate-800 dark:text-[#f8fafc] hover:text-[#4f7cff] dark:hover:text-[#4f7cff] bg-transparent hover:bg-[#4f7cff]/5 dark:hover:bg-[#4f7cff]/10 hover:shadow-[0_0_12px_rgba(79,124,255,0.22)] transition-all"
+            >
+              <FileText className="w-3.5 h-3.5 text-[#4f7cff]" aria-hidden="true" />
+              <span>Resume</span>
+            </Link>
+
+            <ThemeToggle />
+
+            {/* Mobile hamburger menu toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-1.5 rounded-full text-slate-600 dark:text-[#a8b0c0] hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#4f7cff] cursor-pointer"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? (
+                <X className="w-4 h-4" aria-hidden="true" />
+              ) : (
+                <Menu className="w-4 h-4" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-16 z-50 bg-black/60 backdrop-blur-xs lg:hidden flex justify-center px-4 pt-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <motion.nav
+              initial={{ y: -10, opacity: 0, scale: 0.98 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: -10, opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="w-full max-w-md bg-white dark:bg-[#0c1120] border border-slate-200 dark:border-white/12 rounded-2xl p-5 shadow-2xl space-y-4 self-start"
+              onClick={(e) => e.stopPropagation()}
+              aria-label="Mobile Navigation"
+            >
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-white/8">
+                <span className="text-xs font-mono-tech uppercase tracking-wider text-slate-500 dark:text-[#a8b3c7] font-semibold flex items-center gap-1.5">
+                  <Sparkles className="w-3 h-3 text-[#4f7cff]" />
+                  Navigation
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-xs font-mono-tech text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                >
+                  Close ✕
+                </button>
+              </div>
+
+              <div className="flex flex-col space-y-1">
+                {NAV_ITEMS.map((item) => (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-3 py-2 text-sm font-medium rounded-lg text-slate-700 dark:text-[#a8b3c7] hover:text-[#4f7cff] dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pt-3 border-t border-slate-100 dark:border-white/8 flex flex-col gap-2">
                 <Link
                   href="/resume"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80"
+                  className="flex items-center justify-between px-3 py-2.5 text-xs font-medium rounded-lg bg-slate-50 dark:bg-white/5 text-slate-800 dark:text-white hover:border-[#4f7cff] border border-transparent transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-blue-500" />
-                    Resume Preview & Download
+                    <FileText className="w-3.5 h-3.5 text-[#4f7cff]" />
+                    <span>Resume Preview & Download</span>
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-slate-400" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
                 </Link>
                 <Link
                   href="/projects"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80"
+                  className="flex items-center justify-between px-3 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-[#a8b3c7] hover:bg-slate-50 dark:hover:bg-white/5"
                 >
                   <span>All Projects & Case Studies</span>
-                  <ArrowUpRight className="w-4 h-4 text-slate-400" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
                 </Link>
               </div>
-            </div>
-          </nav>
-        </div>
-      )}
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

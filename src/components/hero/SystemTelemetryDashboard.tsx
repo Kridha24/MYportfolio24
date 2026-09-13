@@ -165,7 +165,7 @@ export function SystemTelemetryDashboard() {
           <span>RBAC & Stream Encryption Active</span>
         </span>
         <span className="text-[10px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300">
-          LIVE DEMO SIM
+          DEMO SIMULATION
         </span>
       </div>
     </div>

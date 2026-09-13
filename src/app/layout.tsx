@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0b0f19" },
+    { media: "(prefers-color-scheme: dark)", color: "#070a12" },
     { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
   ],
   width: "device-width",
@@ -32,14 +32,15 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.siteUrl),
   title: {
-    default: "Mihir Shekhar Gupta | AI & Full-Stack Developer",
+    default: "Mihir Shekhar Gupta | Aspiring Software Engineer & AI/ML Enthusiast",
     template: "%s | Mihir Shekhar Gupta",
   },
   description:
-    "Portfolio of Mihir Shekhar Gupta, a Computer Science undergraduate building AI-powered, computer-vision, and full-stack applications.",
+    "Portfolio of Mihir Shekhar Gupta — Aspiring Software Engineer & AI/ML Enthusiast. Building reliable, type-safe, and maintainable full-stack applications, backend systems, and computer vision pipelines.",
   keywords: [
     "Mihir Shekhar Gupta",
-    "AI Developer",
+    "Software Engineer",
+    "AI/ML",
     "Full-Stack Developer",
     "Computer Vision",
     "FastAPI",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     "TypeScript",
     "YOLOv8",
     "OpenCV",
-    "Software Engineer",
+    "PostgreSQL",
   ],
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.siteUrl }],
   creator: SITE_CONFIG.name,
@@ -60,24 +61,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_CONFIG.siteUrl,
-    title: "Mihir Shekhar Gupta | AI & Full-Stack Developer",
+    title: "Mihir Shekhar Gupta | Aspiring Software Engineer & AI/ML Enthusiast",
     description:
-      "Computer Science undergraduate building AI-powered, computer-vision, and full-stack applications with a focus on performance, security, and practical impact.",
+      "Computer Science undergraduate focused on building reliable, type-safe, and maintainable software across full-stack development, backend systems, and computer vision.",
     siteName: "Mihir Shekhar Gupta Portfolio",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Mihir Shekhar Gupta — AI & Full-Stack Developer",
+        alt: "Mihir Shekhar Gupta — Aspiring Software Engineer & AI/ML Enthusiast",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mihir Shekhar Gupta | AI & Full-Stack Developer",
+    title: "Mihir Shekhar Gupta | Aspiring Software Engineer & AI/ML Enthusiast",
     description:
-      "Computer Science undergraduate building AI-powered, computer-vision, and full-stack applications.",
+      "Computer Science undergraduate focused on building reliable, type-safe, and maintainable software across full-stack development, backend systems, and computer vision.",
     images: ["/opengraph-image"],
   },
   robots: {
@@ -113,6 +114,7 @@ export default function RootLayout({
       name: "I.K. Gujral Punjab Technical University",
     },
     sameAs: [
+      SOCIAL_LINKS.github.url,
       SOCIAL_LINKS.linkedin.url,
       SOCIAL_LINKS.leetcode.url,
     ].filter(Boolean),
@@ -149,17 +151,27 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col tech-grid-bg transition-colors duration-200`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col tech-grid-bg transition-colors duration-200 relative`}
       >
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
+        
+        {/* Subtle global atmospheric glow orbs */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
+          <div className="absolute -top-40 left-1/4 w-[600px] h-[600px] rounded-full bg-[#4f7cff]/6 dark:bg-[#4f7cff]/10 blur-[120px] animate-mesh-drift" />
+          <div className="absolute top-1/3 -right-40 w-[550px] h-[550px] rounded-full bg-[#8b5cf6]/5 dark:bg-[#8b5cf6]/8 blur-[130px] animate-mesh-drift" style={{ animationDelay: "-7s" }} />
+          <div className="absolute -bottom-40 left-1/3 w-[500px] h-[500px] rounded-full bg-[#22d3ee]/4 dark:bg-[#22d3ee]/6 blur-[110px] animate-mesh-drift" style={{ animationDelay: "-14s" }} />
+        </div>
+
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <Navbar />
-          <main id="main-content" className="flex-1 focus:outline-none">
-            {children}
-          </main>
-          <Footer />
+          <div className="relative z-10 flex flex-col min-h-screen">
+            <Navbar />
+            <main id="main-content" className="flex-1 focus:outline-none">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

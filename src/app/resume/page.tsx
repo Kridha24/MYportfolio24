@@ -22,7 +22,7 @@ import {
 export const metadata: Metadata = {
   title: "Resume — Mihir Shekhar Gupta",
   description:
-    "Preview and download the official resume of Mihir Shekhar Gupta, AI & Full-Stack Developer.",
+    "Preview and download the official resume of Mihir Shekhar Gupta — Aspiring Software Engineer & AI/ML Enthusiast.",
 };
 
 export default function ResumePage() {
@@ -33,7 +33,7 @@ export default function ResumePage() {
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono-tech text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono-tech text-slate-500 dark:text-[#a8b0c0] hover:text-[#2563eb] dark:hover:text-[#5b8cff] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Return to Portfolio</span>
@@ -41,22 +41,22 @@ export default function ResumePage() {
         </div>
 
         {/* Header & Primary Actions */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-800 mb-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-slate-200 dark:border-white/8 mb-10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-mono-tech uppercase tracking-wider text-blue-600 dark:text-blue-400 font-semibold">
+              <span className="text-xs font-mono-tech uppercase tracking-wider text-[#2563eb] dark:text-[#5b8cff] font-semibold">
                 Curriculum Vitae
               </span>
               <span className="text-xs font-mono-tech text-slate-400 dark:text-slate-500">•</span>
-              <span className="text-xs font-mono-tech text-slate-500 dark:text-slate-400">
+              <span className="text-xs font-mono-tech text-slate-500 dark:text-[#a8b0c0]">
                 Official Document
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-[#f5f7fa]">
               {SITE_CONFIG.name} — Resume
             </h1>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-              B.Tech in Computer Science & Engineering • AI & Full-Stack Developer
+            <p className="text-sm text-slate-600 dark:text-[#a8b0c0] mt-1">
+              B.Tech in Computer Science & Engineering • Aspiring Software Engineer & AI/ML Enthusiast
             </p>
           </div>
 

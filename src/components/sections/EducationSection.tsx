@@ -4,133 +4,129 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { EDUCATION_DATA, CERTIFICATIONS_DATA } from "@/data/education";
 import { PROFILE_DATA } from "@/data/profile";
-import { GraduationCap, ShieldCheck, Trophy, MapPin, Calendar } from "lucide-react";
+import { GraduationCap, Trophy, MapPin, CheckCircle2, ShieldCheck } from "lucide-react";
 
 export function EducationSection() {
+  const edu = EDUCATION_DATA[0];
+  const cert = CERTIFICATIONS_DATA[0];
+  const { cricketLeadership } = PROFILE_DATA;
+
   return (
-    <section id="education" className="py-20 border-t border-slate-200 dark:border-slate-800/80" aria-label="Education and Certifications">
+    <section
+      id="education"
+      className="py-20 border-t border-slate-200/80 dark:border-white/8"
+      aria-label="Education and Leadership"
+    >
       <Container>
         <SectionHeading
-          eyebrow="05 // Education & Credentials"
-          title="Academic foundation & cybersecurity certifications."
-          description="Formal computer science coursework and intensive security bootcamp credentials."
+          eyebrow="ACADEMICS & LEADERSHIP // 05"
+          title="Education & Beyond Engineering"
+          description="A balanced foundation: rigorous academic computer science coursework paired with high-pressure athletic leadership and team discipline."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Education Card */}
-          {EDUCATION_DATA.map((edu) => (
-            <div
-              key={edu.id}
-              className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/40 p-6 sm:p-8 flex flex-col justify-between shadow-2xs"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800/60">
-                    <GraduationCap className="w-6 h-6" />
-                  </div>
-                  <span className="text-xs font-mono-tech text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 px-2.5 py-1 rounded border border-blue-200 dark:border-blue-800/60 font-semibold">
-                    {edu.status}
-                  </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* ============================================================ */}
+          {/* CARD 1: EDUCATION */}
+          {/* ============================================================ */}
+          <div className="rounded-3xl border border-slate-200/90 dark:border-white/8 bg-white/60 dark:bg-[#121826] p-6 sm:p-8 flex flex-col justify-between hover:border-[#2563eb]/40 dark:hover:border-[#5b8cff]/30 transition-all duration-200 shadow-2xs">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between gap-2">
+                <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-[#5b8cff]/10 text-[#2563eb] dark:text-[#5b8cff] border border-blue-200/60 dark:border-[#5b8cff]/20">
+                  <GraduationCap className="w-5 h-5" />
                 </div>
+                <span className="text-xs font-mono-tech text-[#2563eb] dark:text-[#5b8cff] bg-blue-50 dark:bg-[#5b8cff]/10 px-2.5 py-1 rounded-full border border-blue-200/60 dark:border-[#5b8cff]/20 font-semibold">
+                  2023 – Present
+                </span>
+              </div>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-1">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-[#f5f7fa] tracking-tight mb-1">
                   {edu.institution}
                 </h3>
-                <p className="text-base font-medium text-slate-700 dark:text-slate-300 mb-4">
+                <p className="text-base font-semibold text-[#2563eb] dark:text-[#5b8cff] mb-2">
                   {edu.degree}
                 </p>
-
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono-tech text-slate-500 dark:text-slate-400 mb-6">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-blue-500" />
-                    {edu.period}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-cyan-500" />
-                    {edu.location}
-                  </span>
+                <div className="flex items-center gap-2 text-xs font-mono-tech text-slate-500 dark:text-[#a8b0c0]">
+                  <MapPin className="w-3.5 h-3.5 text-cyan-600 dark:text-[#67e8f9]" />
+                  <span>{edu.location}</span>
+                  <span className="text-slate-300 dark:text-white/20">•</span>
+                  <span>Mohali Campus</span>
                 </div>
-
-                {edu.coursework && (
-                  <div className="space-y-2">
-                    <span className="text-xs font-mono-tech uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                      Core Academic Syllabi:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {edu.coursework.map((course) => (
-                        <Badge key={course} variant="mono" size="sm">
-                          {course}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
-            </div>
-          ))}
 
-          {/* Certification Card */}
-          {CERTIFICATIONS_DATA.map((cert) => (
-            <div
-              key={cert.id}
-              className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/40 p-6 sm:p-8 flex flex-col justify-between shadow-2xs"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <div className="p-2 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800/60">
-                    <ShieldCheck className="w-6 h-6" />
-                  </div>
-                  <span className="text-xs font-mono-tech text-cyan-700 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/40 px-2.5 py-1 rounded border border-cyan-200 dark:border-cyan-800/60 font-semibold">
-                    {cert.period}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-1">
-                  {cert.title}
-                </h3>
-                <p className="text-base font-medium text-slate-700 dark:text-slate-300 mb-4">
-                  {cert.program}
-                </p>
-
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                  {cert.description}
-                </p>
-
-                <div className="space-y-2">
-                  <span className="text-xs font-mono-tech uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
-                    Focus Areas Covered:
+              {/* Core Coursework */}
+              {edu.coursework && (
+                <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-white/6">
+                  <span className="text-xs font-mono-tech uppercase tracking-wider text-slate-500 dark:text-[#a8b0c0] font-semibold">
+                    Core Computer Science Syllabi:
                   </span>
                   <div className="flex flex-wrap gap-1.5">
-                    {cert.topics.map((topic) => (
-                      <Badge key={topic} variant="cyan" size="sm">
-                        {topic}
+                    {edu.coursework.map((course) => (
+                      <Badge key={course} variant="mono" size="sm">
+                        {course}
                       </Badge>
                     ))}
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              )}
 
-        {/* Leadership Callout */}
-        <div className="rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-900/30 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">
-              <Trophy className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100">
-                {PROFILE_DATA.cricketLeadership.universityRole}
-              </h4>
-              <p className="text-xs text-slate-600 dark:text-slate-400">
-                Kaimur District Cricket Association representative across U14, U16, and U19 divisions.
-              </p>
+              {/* Cybersecurity Forensics Credential */}
+              {cert && (
+                <div className="p-3.5 rounded-xl border border-cyan-200/60 dark:border-cyan-900/30 bg-cyan-50/40 dark:bg-[#0f1420]/80 space-y-1">
+                  <div className="flex items-center gap-1.5 text-xs font-mono-tech font-bold text-cyan-800 dark:text-[#67e8f9]">
+                    <ShieldCheck className="w-4 h-4 text-cyan-600 dark:text-[#67e8f9]" />
+                    <span>{cert.title}</span>
+                  </div>
+                  <div className="text-[11px] text-slate-600 dark:text-[#a8b0c0]">
+                    {cert.program} • {cert.period}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-          <Badge variant="warning" size="sm">
-            Athletic Leadership
-          </Badge>
+
+          {/* ============================================================ */}
+          {/* CARD 2: BEYOND ENGINEERING (ATHLETIC LEADERSHIP) */}
+          {/* ============================================================ */}
+          <div className="rounded-3xl border border-slate-200/90 dark:border-white/8 bg-white/60 dark:bg-[#121826] p-6 sm:p-8 flex flex-col justify-between hover:border-amber-500/40 dark:hover:border-amber-500/30 transition-all duration-200 shadow-2xs">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between gap-2">
+                <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/30">
+                  <Trophy className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-mono-tech text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 px-2.5 py-1 rounded-full border border-amber-200/60 dark:border-amber-800/30 font-semibold">
+                  Competitive Sports
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-[#f5f7fa] tracking-tight mb-1">
+                  {cricketLeadership.universityRole}
+                </h3>
+                <p className="text-base font-semibold text-amber-600 dark:text-amber-400 mb-2">
+                  Kaimur District Representative (U14, U16, U19)
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-[#a8b0c0] leading-relaxed">
+                  {cricketLeadership.narrative}
+                </p>
+              </div>
+
+              {/* Leadership Attributes Bullets */}
+              <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-white/6">
+                <span className="text-xs font-mono-tech uppercase tracking-wider text-slate-500 dark:text-[#a8b0c0] font-semibold">
+                  Key Leadership Principles:
+                </span>
+                <div className="space-y-2 text-xs sm:text-sm text-slate-700 dark:text-[#a8b0c0]">
+                  {cricketLeadership.qualities.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
