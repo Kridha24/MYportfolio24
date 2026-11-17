@@ -165,7 +165,7 @@ export default function RootLayout({
         </div>
 
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <div className="relative z-10 flex flex-col min-h-screen">
+          <div className="relative z-10 flex flex-col min-h-screen lg:pl-56">
             <Navbar />
             <main id="main-content" className="flex-1 focus:outline-none">
               {children}

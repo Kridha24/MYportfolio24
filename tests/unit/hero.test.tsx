@@ -114,15 +114,11 @@ describe("HeroSection Component", () => {
     expect(screen.getByText("University Cricket Vice-Captain")).toBeInTheDocument();
   });
 
-  it("renders the engineering visual with monogram, location and technology chips", () => {
+  it("renders the engineering visual with larger profile photo, Kridha_ms_24 handle, and no floating tech chips", () => {
     render(<HeroSection />);
 
-    expect(screen.getAllByText("MSG").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Mohali, Punjab, India").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("Python").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("React").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("FastAPI").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("AI/ML").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("TypeScript").length).toBeGreaterThan(0);
+    expect(screen.getAllByAltText("Mihir Shekhar Gupta").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Kridha_ms_24").length).toBeGreaterThan(0);
+    expect(screen.queryByText("FastAPI")).not.toBeInTheDocument();
   });
 });

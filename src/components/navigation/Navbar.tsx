@@ -2,21 +2,36 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { Menu, X, FileText, ArrowUpRight, Sparkles } from "lucide-react";
+import {
+  Menu,
+  X,
+  FileText,
+  ArrowUpRight,
+  Sparkles,
+  Home,
+  User,
+  Briefcase,
+  FolderGit2,
+  Cpu,
+  BookOpen,
+  Award,
+  Mail,
+} from "lucide-react";
 import { SITE_CONFIG } from "@/data/links";
 import { motion, AnimatePresence } from "motion/react";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "/#home", sectionId: "home" },
-  { label: "About", href: "/#about", sectionId: "about" },
-  { label: "Experience", href: "/#experience", sectionId: "experience" },
-  { label: "Projects", href: "/#projects", sectionId: "projects" },
-  { label: "Skills", href: "/#skills", sectionId: "skills" },
-  { label: "Learning", href: "/#learning", sectionId: "learning" },
-  { label: "DevOps", href: "/#cloud-devops", sectionId: "cloud-devops" },
-  { label: "Contact", href: "/#contact", sectionId: "contact" },
+  { label: "Home", href: "/#home", sectionId: "home", icon: Home, iconColor: "text-blue-500" },
+  { label: "About", href: "/#about", sectionId: "about", icon: User, iconColor: "text-cyan-500" },
+  { label: "Experience", href: "/#experience", sectionId: "experience", icon: Briefcase, iconColor: "text-emerald-500" },
+  { label: "Projects", href: "/#projects", sectionId: "projects", icon: FolderGit2, iconColor: "text-violet-500" },
+  { label: "Skills", href: "/#skills", sectionId: "skills", icon: Cpu, iconColor: "text-amber-500" },
+  { label: "Learning", href: "/#learning", sectionId: "learning", icon: BookOpen, iconColor: "text-pink-500" },
+  { label: "Certifications", href: "/#certifications", sectionId: "certifications", icon: Award, iconColor: "text-orange-500" },
+  { label: "Contact", href: "/#contact", sectionId: "contact", icon: Mail, iconColor: "text-indigo-500" },
 ];
 
 export function Navbar() {
@@ -78,26 +93,27 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="sticky top-2 sm:top-4 z-40 w-full px-3 sm:px-6 transition-all duration-300">
-      <div className="max-w-5xl mx-auto">
-        <div
-          className={`h-13 sm:h-14 px-3 sm:px-4 rounded-full flex items-center justify-between border transition-all duration-300 ${
-            scrolled
-              ? "bg-[#f8fafc]/90 dark:bg-[#070a12]/90 backdrop-blur-md border-[#4f7cff]/25 dark:border-white/12 shadow-[0_8px_30px_rgba(79,124,255,0.12)]"
-              : "bg-[#f8fafc]/80 dark:bg-[#070a12]/80 backdrop-blur-md border-slate-200/90 dark:border-white/8 shadow-2xs"
-          }`}
-        >
-          {/* Monogram / Identity */}
+    <>
+      {/* Desktop Fixed Left Sidebar */}
+      <aside className="hidden lg:flex fixed left-0 top-0 bottom-0 w-56 z-40 flex-col justify-between p-4 border-r border-slate-200/80 dark:border-white/8 bg-[#f8fafc]/90 dark:bg-[#070a12]/90 backdrop-blur-md">
+        <div className="space-y-6">
+          {/* Identity */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group focus-visible:outline-none shrink-0"
+            className="flex items-center gap-2.5 group focus-visible:outline-none px-2 pt-1"
             aria-label="Mihir Shekhar Gupta — Home"
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#3b66ff] via-[#4f7cff] to-[#8b5cf6] flex items-center justify-center text-white font-mono-tech font-bold text-xs tracking-wider shadow-[0_0_14px_rgba(79,124,255,0.45)] group-hover:scale-105 transition-transform">
-              {SITE_CONFIG.monogram}
+            <div className="w-9 h-9 rounded-full overflow-hidden ring-1 ring-[#4f7cff]/50 shadow-[0_0_14px_rgba(79,124,255,0.45)] group-hover:scale-105 transition-transform shrink-0">
+              <Image
+                src="/images/mihir-profile.jpg"
+                alt={SITE_CONFIG.name}
+                width={36}
+                height={36}
+                className="w-full h-full object-cover object-[50%_20%]"
+              />
             </div>
-            <div className="hidden sm:flex flex-col">
-              <span className="text-xs font-semibold tracking-tight text-slate-900 dark:text-[#f8fafc]">
+            <div className="flex flex-col min-w-0">
+              <span className="text-xs font-semibold tracking-tight text-slate-900 dark:text-[#f8fafc] truncate">
                 {SITE_CONFIG.name}
               </span>
               <span className="text-[10px] font-mono-tech text-slate-500 dark:text-[#a8b3c7]">
@@ -106,65 +122,116 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav
-            className="hidden lg:flex items-center gap-1"
-            aria-label="Main Navigation"
-          >
+          {/* Vertical Navigation Links */}
+          <nav className="flex flex-col gap-1" aria-label="Main Navigation">
             {NAV_ITEMS.map((item) => {
               const isActive = isHomePage && activeSection === item.sectionId;
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`relative px-3.5 py-1 text-xs font-medium rounded-full transition-colors duration-200 ${
+                  className={`relative flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-xl transition-colors duration-200 ${
                     isActive
                       ? "text-[#4f7cff] dark:text-[#4f7cff] font-semibold"
-                      : "text-slate-600 dark:text-[#a8b0c0] hover:text-slate-900 dark:hover:text-white"
+                      : "text-slate-600 dark:text-[#a8b0c0] hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/5"
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="activeNavPill"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#4f7cff]/15 via-[#8b5cf6]/15 to-[#22d3ee]/10 border border-[#4f7cff]/30 shadow-[0_0_12px_rgba(79,124,255,0.18)]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#4f7cff]/15 via-[#8b5cf6]/15 to-[#22d3ee]/10 border border-[#4f7cff]/30 shadow-[0_0_12px_rgba(79,124,255,0.18)] will-change-transform"
+                      transition={{ type: "spring", stiffness: 600, damping: 35, mass: 0.5 }}
                     />
                   )}
+                  <Icon
+                    className={`w-3.5 h-3.5 relative z-10 shrink-0 ${item.iconColor}`}
+                    aria-hidden="true"
+                  />
                   <span className="relative z-10">{item.label}</span>
                 </Link>
               );
             })}
           </nav>
+        </div>
 
-          {/* Actions: Resume, Theme Toggle, Mobile Trigger */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
+        {/* Bottom Actions: Resume & Theme Toggle */}
+        <div className="flex items-center justify-between gap-2 pt-4 border-t border-slate-200/80 dark:border-white/8">
+          <Link
+            href="/resume"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-slate-300/90 dark:border-white/12 hover:border-[#4f7cff] dark:hover:border-[#4f7cff] text-slate-800 dark:text-[#f8fafc] hover:text-[#4f7cff] dark:hover:text-[#4f7cff] bg-transparent hover:bg-[#4f7cff]/5 dark:hover:bg-[#4f7cff]/10 transition-all"
+          >
+            <FileText className="w-3.5 h-3.5 text-[#4f7cff]" aria-hidden="true" />
+            <span>Resume</span>
+          </Link>
+          <ThemeToggle />
+        </div>
+      </aside>
+
+      {/* Mobile / Tablet Top Header */}
+      <header className="lg:hidden sticky top-2 sm:top-4 z-40 w-full px-3 sm:px-6 transition-all duration-300">
+        <div className="max-w-5xl mx-auto">
+          <div
+            className={`h-13 sm:h-14 px-3 sm:px-4 rounded-full flex items-center justify-between border transition-all duration-300 ${
+              scrolled
+                ? "bg-[#f8fafc]/90 dark:bg-[#070a12]/90 backdrop-blur-md border-[#4f7cff]/25 dark:border-white/12 shadow-[0_8px_30px_rgba(79,124,255,0.12)]"
+                : "bg-[#f8fafc]/80 dark:bg-[#070a12]/80 backdrop-blur-md border-slate-200/90 dark:border-white/8 shadow-2xs"
+            }`}
+          >
+            {/* Mobile Identity */}
             <Link
-              href="/resume"
-              className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full border border-slate-300/90 dark:border-white/12 hover:border-[#4f7cff] dark:hover:border-[#4f7cff] text-slate-800 dark:text-[#f8fafc] hover:text-[#4f7cff] dark:hover:text-[#4f7cff] bg-transparent hover:bg-[#4f7cff]/5 dark:hover:bg-[#4f7cff]/10 hover:shadow-[0_0_12px_rgba(79,124,255,0.22)] transition-all"
+              href="/"
+              className="flex items-center gap-2.5 group focus-visible:outline-none shrink-0"
+              aria-label="Mihir Shekhar Gupta — Home"
             >
-              <FileText className="w-3.5 h-3.5 text-[#4f7cff]" aria-hidden="true" />
-              <span>Resume</span>
+              <div className="w-8 h-8 rounded-full overflow-hidden ring-1 ring-[#4f7cff]/50 shadow-[0_0_14px_rgba(79,124,255,0.45)] group-hover:scale-105 transition-transform shrink-0">
+                <Image
+                  src="/images/mihir-profile.jpg"
+                  alt={SITE_CONFIG.name}
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover object-[50%_20%]"
+                />
+              </div>
+              <div className="hidden sm:flex flex-col">
+                <span className="text-xs font-semibold tracking-tight text-slate-900 dark:text-[#f8fafc]">
+                  {SITE_CONFIG.name}
+                </span>
+                <span className="text-[10px] font-mono-tech text-slate-500 dark:text-[#a8b3c7]">
+                  Engineering
+                </span>
+              </div>
             </Link>
 
-            <ThemeToggle />
+            {/* Actions: Resume, Theme Toggle, Mobile Trigger */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <Link
+                href="/resume"
+                className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full border border-slate-300/90 dark:border-white/12 hover:border-[#4f7cff] dark:hover:border-[#4f7cff] text-slate-800 dark:text-[#f8fafc] hover:text-[#4f7cff] dark:hover:text-[#4f7cff] bg-transparent hover:bg-[#4f7cff]/5 dark:hover:bg-[#4f7cff]/10 hover:shadow-[0_0_12px_rgba(79,124,255,0.22)] transition-all"
+              >
+                <FileText className="w-3.5 h-3.5 text-[#4f7cff]" aria-hidden="true" />
+                <span>Resume</span>
+              </Link>
 
-            {/* Mobile hamburger menu toggle */}
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 rounded-full text-slate-600 dark:text-[#a8b0c0] hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#4f7cff] cursor-pointer"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <X className="w-4 h-4" aria-hidden="true" />
-              ) : (
-                <Menu className="w-4 h-4" aria-hidden="true" />
-              )}
-            </button>
+              <ThemeToggle />
+
+              {/* Mobile hamburger menu toggle */}
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-1.5 rounded-full text-slate-600 dark:text-[#a8b0c0] hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#4f7cff] cursor-pointer"
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? (
+                  <X className="w-4 h-4" aria-hidden="true" />
+                ) : (
+                  <Menu className="w-4 h-4" aria-hidden="true" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Mobile Menu Drawer */}
       <AnimatePresence>
@@ -238,6 +305,7 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+      </header>
+    </>
   );
 }

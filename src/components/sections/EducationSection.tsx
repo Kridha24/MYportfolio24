@@ -19,7 +19,7 @@ export function EducationSection() {
     >
       <Container>
         <SectionHeading
-          eyebrow="ACADEMICS & LEADERSHIP // 05"
+          eyebrow="EDUCATION & LEADERSHIP // 07"
           title="Education & Beyond Engineering"
           description="A balanced foundation: rigorous academic computer science coursework paired with high-pressure athletic leadership and team discipline."
         />

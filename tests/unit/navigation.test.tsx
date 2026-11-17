@@ -13,26 +13,27 @@ function renderWithTheme(ui: React.ReactElement) {
 }
 
 describe("Navbar Component", () => {
-  it("renders the monogram logo and personal branding", () => {
+  it("renders the profile avatar and personal branding", () => {
     renderWithTheme(<Navbar />);
-    expect(screen.getByText("MSG")).toBeInTheDocument();
-    expect(screen.getByText("Mihir Shekhar Gupta")).toBeInTheDocument();
+    expect(screen.getAllByAltText("Mihir Shekhar Gupta").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Mihir Shekhar Gupta").length).toBeGreaterThan(0);
   });
 
-  it("renders all primary desktop navigation links", () => {
+  it("renders all primary desktop navigation links without DevOps", () => {
     renderWithTheme(<Navbar />);
     expect(screen.getAllByText("Home").length).toBeGreaterThan(0);
     expect(screen.getAllByText("About").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Experience").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Projects").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Skills").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("DevOps").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Learning").length).toBeGreaterThan(0);
+    expect(screen.queryByText("DevOps")).not.toBeInTheDocument();
     expect(screen.getAllByText("Contact").length).toBeGreaterThan(0);
   });
 
   it("renders the resume action button", () => {
     renderWithTheme(<Navbar />);
-    expect(screen.getByRole("link", { name: /resume/i })).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /resume/i }).length).toBeGreaterThan(0);
   });
 
   it("toggles mobile menu when hamburger button is clicked", () => {

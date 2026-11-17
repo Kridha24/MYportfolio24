@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SOCIAL_LINKS, SITE_CONFIG } from "@/data/links";
 import { ArrowUp, Linkedin, Code2, Mail, Github } from "lucide-react";
@@ -12,8 +13,14 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Identity & Attribution */}
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-full bg-[#2563eb] dark:bg-[#5b8cff] flex items-center justify-center text-white dark:text-[#080b12] font-mono-tech font-bold text-[11px] shrink-0">
-              {SITE_CONFIG.monogram}
+            <div className="w-7 h-7 rounded-full overflow-hidden ring-1 ring-[#4f7cff]/40 shrink-0">
+              <Image
+                src="/images/mihir-profile.jpg"
+                alt={SITE_CONFIG.name}
+                width={28}
+                height={28}
+                className="w-full h-full object-cover object-[50%_20%]"
+              />
             </div>
             <div className="text-xs text-slate-600 dark:text-[#a8b0c0]">
               <span className="font-semibold text-slate-900 dark:text-[#f5f7fa]">

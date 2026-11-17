@@ -14,7 +14,7 @@ export function ExperienceSection() {
     >
       <Container>
         <SectionHeading
-          eyebrow="EXPERIENCE // 03"
+          eyebrow="EXPERIENCE // 02"
           title="Practical Engineering Experience"
           description="Verified hands-on industry internships spanning full-stack web architectures and machine learning engineering workflows."
         />

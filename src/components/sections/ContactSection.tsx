@@ -19,7 +19,7 @@ export function ContactSection() {
           <div className="inline-flex items-center gap-2">
             <span className="h-px w-6 bg-[#2563eb] dark:bg-[#5b8cff]" aria-hidden="true" />
             <span className="text-xs font-mono-tech tracking-wider uppercase text-[#2563eb] dark:text-[#5b8cff] font-semibold">
-              CONTACT // 06
+              CONTACT // 08
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-[#f5f7fa]">

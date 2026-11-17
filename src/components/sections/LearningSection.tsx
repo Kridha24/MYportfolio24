@@ -10,7 +10,6 @@ import {
   PROJECT_APPLICATIONS,
 } from "@/data/learning";
 import { LearningTracksGrid } from "@/components/learning/LearningTracksGrid";
-import { RagPipelineVisual } from "@/components/learning/RagPipelineVisual";
 import { ArchitectureGraph } from "@/components/learning/ArchitectureGraph";
 import {
   ArrowRight,
@@ -61,14 +60,7 @@ export function LearningSection() {
         </div>
 
         {/* =================================================================== */}
-        {/* 3. INTERACTIVE RAG WORKFLOW ILLUSTRATION                            */}
-        {/* =================================================================== */}
-        <div className="mb-20">
-          <RagPipelineVisual />
-        </div>
-
-        {/* =================================================================== */}
-        {/* 4. CENTERPIECE: HOW THE COMPLETE SYSTEM WORKS TOGETHER             */}
+        {/* 3. CENTERPIECE: HOW THE COMPLETE SYSTEM WORKS TOGETHER             */}
         {/* =================================================================== */}
         <div className="mb-14">
           <ArchitectureGraph />

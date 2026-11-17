@@ -116,7 +116,7 @@ export function RagPipelineVisual() {
   return (
     <div
       ref={containerRef}
-      className="p-6 sm:p-8 rounded-3xl border border-violet-500/25 bg-gradient-to-b from-[#15102a]/60 via-[#0e1220]/70 to-[#0b0f19]/80 backdrop-blur-md relative overflow-hidden shadow-sm"
+      className="p-6 sm:p-8 rounded-3xl border border-violet-500/25 bg-gradient-to-b from-slate-50/95 via-white/95 to-violet-50/50 dark:from-[#15102a]/60 dark:via-[#0e1220]/70 dark:to-[#0b0f19]/80 backdrop-blur-md relative overflow-hidden shadow-sm"
       aria-label="Interactive RAG Workflow Illustration"
     >
       {/* Background ambient gradient glow */}

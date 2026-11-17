@@ -6,19 +6,19 @@ export const PROFILE_DATA: Profile = {
   role: "Aspiring Software Engineer & AI/ML Enthusiast",
   location: "Mohali, Punjab, India",
   email: "mihirshekhar887@gmail.com",
-  educationSummary: "B.Tech in Computer Science & Engineering, I.K. Gujral Punjab Technical University (2023–Present)",
+  educationSummary: "B.Tech in Computer Science & Engineering, I.K. Gujral Punjab Technical University (2023–2027)",
   availability: "Available for SDE, Full-Stack & AI/ML Opportunities",
   eyebrow: "Engineering Portfolio",
   heroGreeting: "Hi, I’m",
   headline: "Aspiring Software Engineer & AI/ML Enthusiast",
   supportingText:
-    "I build intelligent full-stack applications and backend systems while expanding my skills across cloud infrastructure, containerization, deployment, and reliable software engineering.",
+    "Driven final-year B.Tech Computer Science student with 2 internships and hands-on experience in full-stack software engineering and AI/ML applications. Available from January 2027.",
   heroDescription:
     "I build reliable full-stack applications, backend systems, and AI-powered solutions that address practical problems through thoughtful architecture, secure implementation, and maintainable code.",
   credibilityStrip: [
     {
       label: "B.Tech CSE",
-      detail: "IKGPTU (2023–Present)",
+      detail: "IKGPTU (2023–2027)",
       iconName: "GraduationCap",
     },
     {

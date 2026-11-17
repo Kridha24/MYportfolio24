@@ -8,7 +8,9 @@ import { HomemindVisual } from "@/components/projects/HomemindVisual";
 import { FinanceControllerVisual } from "@/components/projects/FinanceControllerVisual";
 import { TraffiqVisual } from "@/components/projects/TraffiqVisual";
 import { BuildeaseVisual } from "@/components/projects/BuildeaseVisual";
+import { ResumeProjectVisual } from "@/components/projects/ResumeProjectVisual";
 import { PROJECTS_DATA } from "@/data/projects";
+import { RESUME_ADDITIONAL_PROJECTS } from "@/data/achievements";
 import { ArrowRight, CheckCircle2, Lock, Github, Sparkles, Zap } from "lucide-react";
 
 export function ProjectsSection() {
@@ -26,9 +28,9 @@ export function ProjectsSection() {
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
           <SectionHeading
-            eyebrow="PROJECTS // 02"
+            eyebrow="PROJECTS // 03"
             title="Featured Engineering Systems"
-            description="Deep technical case studies demonstrating multi-tenant SaaS architecture, automated financial reconciliation, computer vision inference, and collaborative full-stack systems."
+            description="Projects from my resume spanning multi-tenant full-stack architecture, Graph RAG knowledge systems, ML entity resolution, and regression workflows."
             className="mb-0"
           />
 
@@ -150,7 +152,8 @@ export function ProjectsSection() {
             </div>
           </div>
 
-          {/* ============================================================ */}
+
+                  {/* ============================================================ */}
           {/* SHOWCASE 2: AI FINANCE CONTROLLER (Alternating Layout: Visual Left) */}
           {/* ============================================================ */}
           <div className="rounded-3xl border border-slate-200/90 dark:border-white/10 bg-white/70 dark:bg-[#121826]/90 p-6 sm:p-8 lg:p-10 transition-all duration-300 hover:border-emerald-500/50 dark:hover:border-emerald-500/40 hover:shadow-[0_0_35px_rgba(16,185,129,0.15)] shadow-md relative overflow-hidden group">
@@ -469,6 +472,91 @@ export function ProjectsSection() {
               </div>
             </div>
           </div>
+
+        {/* Additional Resume & Hackathon Projects (Same 12-Col Alternating Showcase Format) */}
+        {RESUME_ADDITIONAL_PROJECTS.map((proj, idx) => {
+          const isVisualLeft = idx % 2 === 0;
+          return (
+            <div
+              key={proj.id}
+              className="rounded-3xl border border-slate-200/90 dark:border-white/10 bg-white/70 dark:bg-[#121826]/90 p-6 sm:p-8 lg:p-10 transition-all duration-150 ease-out hover:border-[#4f7cff]/50 dark:hover:border-[#4f7cff]/40 hover:shadow-[0_0_30px_rgba(79,124,255,0.14)] shadow-md relative overflow-hidden group will-change-transform"
+            >
+              <div
+                className="absolute -top-28 -right-28 w-80 h-80 rounded-full bg-[#4f7cff]/10 dark:bg-[#4f7cff]/15 blur-3xl pointer-events-none"
+                aria-hidden="true"
+              />
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                {/* Technical Details & Highlights (5 cols) */}
+                <div
+                  className={`lg:col-span-5 space-y-5 ${
+                    isVisualLeft ? "order-2 lg:order-2" : "order-2 lg:order-1"
+                  }`}
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-2.5">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#4f7cff]/10 text-[#2563eb] dark:text-[#7ba3ff] text-[11px] font-mono-tech font-bold uppercase tracking-wider border border-[#4f7cff]/25">
+                        <Zap className="w-3 h-3" aria-hidden="true" />
+                        Resume Project
+                      </span>
+                      <Badge variant="cyan" size="sm">
+                        {proj.category}
+                      </Badge>
+                    </div>
+
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-[#f5f7fa] tracking-tight">
+                      {proj.title}
+                    </h3>
+                    <div className="text-xs font-mono-tech text-slate-500 dark:text-[#a8b0c0] mt-1">
+                      {proj.subtitle}
+                    </div>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-[#a8b0c0] leading-relaxed">
+                    {proj.summary}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {proj.technologies.map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="mono"
+                        size="sm"
+                        className="hover:border-[#4f7cff] dark:hover:border-[#4f7cff] transition-colors duration-150"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <ul className="space-y-2 pt-1">
+                    {proj.highlights.map((point, pIdx) => (
+                      <li
+                        key={pIdx}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 dark:text-[#cbd5e1] leading-relaxed"
+                      >
+                        <CheckCircle2
+                          className="w-4 h-4 text-[#2563eb] dark:text-[#5b8cff] shrink-0 mt-0.5"
+                          aria-hidden="true"
+                        />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Architecture / Pipeline Visual (7 cols) */}
+                <div
+                  className={`lg:col-span-7 ${
+                    isVisualLeft ? "order-1 lg:order-1" : "order-1 lg:order-2"
+                  }`}
+                >
+                  <ResumeProjectVisual projectId={proj.id} />
+                </div>
+              </div>
+            </div>
+          );
+        })}
         </div>
       </Container>
     </section>
